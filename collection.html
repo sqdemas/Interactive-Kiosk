@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Personalization Privacy Paradox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Freeman' rel='stylesheet'>
+<!--Refreshes index.html after 180 seconds-->
+  <meta http-equiv="refresh" content="180;url=index.html">
+<!--Creates 1s fade-in animation-->
+  <style>
+    body {
+        animation: fadeInAnimation ease 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+
+<body>
+  <div class= "maincontent">
+    <ul class="a">
+      <li><a href="explore.html" class="button">Home</a></li>
+      <li style="float:left"><p>The Personalization Privacy Paradox</li>
+    </ul>
+
+    <div class="flex-container-vertical">
+      <div>
+        <h2>Data Collection</h2>
+        <p>Data collection is</p>
+
+        <p>Inputs:</p>
+        <ul class="b">
+          <li class="b">Implicit data</li>
+          <li class="b">Explicit data</li>
+        </ul>
+        <div class="button_containers">
+          <a href="risks.html" class="animated-button">Learn about ethical implications</a>
+        </div>   
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>

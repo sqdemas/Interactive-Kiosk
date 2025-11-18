@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Personalization Privacy Paradox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Freeman' rel='stylesheet'>
+<!--Refreshes index.html after 180 seconds-->
+  <meta http-equiv="refresh" content="180;url=index.html">
+<!--Creates 1s fade-in animation-->
+  <style>
+    body {
+        animation: fadeInAnimation ease 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+
+<body>
+  <div class= "maincontent">
+    <ul class="a">
+      <li style="float:right"><a href="explore.html" class="button">Home</a></li>
+      <li style="float:left"><p>The Personalization Privacy Paradox</li>
+    </ul>
+
+    <div class="flex-container-vertical">
+      <div>
+        <h2>What is it?</h2>
+        <p>The Personalization Privacy Paradox refers to the conflict between a user's desire for <b>personalized recommendations</b> and their concern over the use of <b>personal data</b> to achieve such personalization.</p>
+        <img src="assets/scale.png" class="img-responsive img-border" style="width:70%"alt="Image of scale with words 'Personalization' and 'Privacy'" >
+        <div style="text-align: center; margin-top: 30px; font-size: 20px;">
+          <p>Learn more:</p>
+        </div>
+        <div class="button_containers">
+          <a href="privacy.html" class="animated-button">Privacy Concerns</a>
+          <a href="personalization.html" class="animated-button">Personalized Algorithms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

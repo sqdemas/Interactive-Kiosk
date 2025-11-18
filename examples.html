@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Personalization Privacy Paradox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Freeman' rel='stylesheet'>
+<!--Refreshes index.html after 180 seconds-->
+  <meta http-equiv="refresh" content="180;url=index.html">
+<!--Creates 1s fade-in animation-->
+  <style>
+    body {
+        animation: fadeInAnimation ease 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+
+<body>
+  <div class= "maincontent">
+    <ul class="a">
+      <li style="float:right"><a href="explore.html" class="button">Home</a></li>
+      <li style="float:left"><p>The Personalization Privacy Paradox</li>
+    </ul>
+
+    <div class="flex-container-vertical">
+      <div>
+        <h2>Real World Uses</h2>
+        <p>Click different logos to learn more about each company's algorithm usage!</p>
+
+        <div class="button_containers">
+          <a href="filter.html" class="animated-button">Learn about how algorithms work</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+function result() {
+  if (document.getElementById('correct').checked) {
+    document.getElementById("myresults").innerHTML =
+        "Correct! In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
+  } else {
+    document.getElementById("myresults").innerHTML =
+        "Not quite! In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
+  }
+}
+
+// Make entire .button elements (that contain a radio) act as the selectable choice.
+document.addEventListener('DOMContentLoaded', function () {
+  function clearGroup(name) {
+    if (!name) return;
+    document.querySelectorAll('.button input[type="radio"][name="' + name + '"]').forEach(function (r) {
+      var p = r.closest('.button');
+      if (p) p.classList.remove('selected');
+    });
+  }
+
+  document.querySelectorAll('.button').forEach(function (btn) {
+    var radio = btn.querySelector('input[type="radio"]');
+    if (!radio) return; // skip buttons without radios (e.g., Reveal)
+
+    // Initialize selected state from checked radios (in case persisted)
+    if (radio.checked) btn.classList.add('selected');
+
+    // Click on the whole button selects the radio and updates styles
+    btn.addEventListener('click', function (e) {
+      // Prevent double-activating if clicking directly on link/button within
+      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
+      radio.checked = true;
+      clearGroup(radio.name);
+      btn.classList.add('selected');
+    });
+
+    // If radio changes (e.g., by keyboard), reflect selection visually
+    radio.addEventListener('change', function () {
+      if (radio.checked) {
+        clearGroup(radio.name);
+        btn.classList.add('selected');
+      } else {
+        btn.classList.remove('selected');
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

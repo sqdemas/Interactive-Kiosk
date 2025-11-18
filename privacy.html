@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Personalization Privacy Paradox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Freeman' rel='stylesheet'>
+<!--Refreshes index.html after 180 seconds-->
+  <meta http-equiv="refresh" content="180;url=index.html">
+<!--Creates 1s fade-in animation-->
+  <style>
+    body {
+        animation: fadeInAnimation ease 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+
+<body>
+  <div class= "maincontent">
+    <ul class="a">
+      <li><a href="explore.html" class="button">Home</a></li>
+      <li style="float:left"><p>The Personalization Privacy Paradox</li>
+    </ul>
+
+    <div class="flex-container-vertical">
+      <div>
+        <h2>Privacy Concerns</h2>
+        <p>In order to make increasingly accurate and specific predictions, recommender algorithms must analyze large quantites of personal data. This need for mass amounts of data can cause many ethical issues to arise:</p>
+
+        <ul class="b">
+          <li class="b">Data collection without user consent</li>
+          <li class="b">Lack of autonomy for users</li>
+          <li class="b">Data Leakage</li>
+        </ul>
+        <div style="text-align: center; margin-top: 30px; font-size: 20px;">
+          <p>Learn more:</p>
+        </div>
+        <div class="button_containers">
+          <a href="collection.html" class="animated-button">Learn about data collection</a>
+          <a href="risks.html" class="animated-button">Learn about ethical implications</a>
+        </div>   
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>

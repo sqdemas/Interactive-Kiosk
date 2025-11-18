@@ -1,0 +1,420 @@
+body {
+  background-color: rgb(255, 255, 255);
+  font-family: 'Freeman';
+}
+
+ul.a {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-right: 10px;
+  overflow: hidden;
+  background-color: #A35FF7;
+  border: 5px solid #A35FF7;
+  border-radius: 5px;
+}
+
+ul.b {
+  list-style-type:disc;
+}
+li.b {
+  font-size: 20px;
+}
+li {
+  font-size: 25px;
+}
+
+li p {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 0px 16px;
+  text-decoration: none;
+  float: left;
+  display: block;
+}
+
+li a {
+  display: block;
+  float: right;
+  color: white;
+  text-align: center;
+  padding: 23px 16px;
+  text-decoration: none;
+}
+
+li  a:hover {
+    color: grey;
+  }
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 85%;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide slideshow es by default */
+.mySlides {
+  display: none;
+}
+
+/* Slideshow next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Slideshow position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* Slideshow on hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Slideshow caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 20px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Slideshow dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Slideshow fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.seamless-video {
+  width: 80%;
+  justify-content: center;
+  align-self: auto;
+  margin: 16px auto 0; 
+  height: auto;
+  object-fit: cover;
+  display: flex;
+  border: none;
+  outline: none;
+  background: none;
+  pointer-events: none; /* prevents clicks */
+}
+/* Columns */
+.flex-container-horizontal {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  align-items: center;
+}
+.flex-container-horizontal > div {
+  background-color: white;
+  width: 90%;
+  margin: 10px;
+  padding: 10px;
+}
+.flex-container-horizontal > div > h2{
+  background-color: white;
+  font-size: 35px;
+}
+.flex-container-horizontal > div > p{
+  background-color: white;
+  font-size: 20px;
+}
+
+.flex-container-vertical {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  flex-direction: column;
+  align-items: center;
+}
+.flex-container-vertical > div {
+  background-color: white;
+  width: 80%;
+  margin: 10px;
+  padding: 10px;
+}
+.flex-container-vertical > div > h2{
+  background-color: white;
+  font-size: 35px;
+  position: relative;
+}
+.flex-container-vertical > div > p{
+  background-color: white;
+  font-size: 20px;
+}
+
+/* Center only images that are inside a flex container without affecting other children */
+.flex-container img,
+.flex-container-horizontal img,
+.flex-container-vertical img {
+  display: block;       /* make margin:auto work consistently */
+  margin-left: auto;
+  margin-right: auto;    /* centers horizontally */
+  align-self: center;    /* centers on cross-axis when needed */
+  width: 70%;
+  height: auto;
+}
+
+/* The modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* hmmm I'm confused */
+.center {
+  justify-content: center;
+  margin-left: 0;
+  margin-right: auto;
+  align-items: center;
+  display: flex;
+  margin: 5px;
+}
+
+.quiz-section {
+  border: 5px solid #750CF7;
+  background-color: #F70CCB;
+  padding-bottom: 10px;
+  margin: 20px;
+  font-size: 20px;
+  color: white;
+  border-radius: 15px;
+  max-width: 100%;
+}
+
+.quiz-section > p{
+  margin: 10px
+}
+
+.img-border {
+  border: 5px solid rgb(0, 0, 0);
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/*Button */
+.button-box {
+  display: flex;
+  height: 200px;
+  border: 0px solid ;
+  align-items: center;
+  justify-content: center;
+  }
+
+.reveal-button {
+  display: inline-block;
+  background-color: #6188F4;
+  cursor: pointer;
+  font: inherit;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #750CF7;
+  transition: transform 0.2s ease;
+  margin: 5px;
+}
+
+.reveal-button:active {
+  transform: scale(0.96);
+}
+
+/* Change button colors and other attributes here. */
+.button {
+  display: inline-block;
+  background-color: #6188F4;
+  margin: 10px;
+  cursor: pointer;
+  font: inherit;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 15px 25px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #750CF7;
+  transition: transform 0.2s ease;
+}
+
+.button:active {
+  transform: scale(0.96);
+}
+
+/*Hover color...not relevant for touch screen*/
+
+button:hover {
+  color: #4682B4;
+}
+
+/* Quiz choice styling: hide native radio circle and show selected state on the whole button */
+.button input[type="radio"] {
+  /* keep the input for form state/accessibility but hide the native control */
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.button.selected {
+  background-color: #61d437; /* green */
+  color: white;
+  border-color: rgba(0,0,0,0.2);
+}
+
+.animated-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #6188F4;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 0;
+  cursor: pointer;
+  font: inherit;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 25px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #F70CCB;
+  transition: transform 0.2s ease;
+  max-width: 250px;
+  min-height: 50px;
+}
+
+.animated-button:active {
+  transform: scale(0.96);
+}
+
+.explore-button {
+  display: block; /* make it take its own line so margin:auto centers it */
+  margin: 16px auto 0; /* space above, centered horizontally */
+  background-color: #A35FF7;
+  padding: 20px 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  width: 20%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.maincontent {
+  min-height: fit-content;
+  height: 53vw;
+  position: relative;
+  border: 10px solid #750CF7;
+  border-radius: 15px;
+}
+
+.button_containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border: 0px solid;
+}
+
+.bubble-container { /* controls button layout on explore page to look like bubble cloud*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  border: 0px solid;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  .maincontent {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+  
