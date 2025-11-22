@@ -47,17 +47,12 @@
             <div class="button"><input type="radio" name="q1" id="incorrect"> $5.5 billion</div>
             <div class="button"><input type="radio" name="q1" id="correct"> $6.8 billion</div>
           </div>
-          <div class="center">
-            <div class="reveal-button" onclick="result()">Reveal</div>
-          </div>
+          <!-- Reveal button removed: results now show automatically when a choice is selected -->
           <p id="myresults" class="my-results center"></p>
         </div>
-        <div style="text-align: center; margin-top: 30px; font-size: 20px;">
-          <p>Learn more:</p>
-        </div>
         <div class="button_containers">
-          <a href="filter.html" class="animated-button">How do algorithms work?</a>
-          <a href="examples.html" class="animated-button">See how algorithms are used by different companies</a>
+          <a href="filter.html" class="button">How do algorithms work?</a>
+          <a href="examples.html" class="button">See how algorithms are used by different companies</a>
         </div>
 
       </div>
@@ -66,12 +61,18 @@
 
 <script>
 function result() {
-  if (document.getElementById('correct').checked) {
+  // Find the selected radio for question q1
+  var selected = document.querySelector('input[name="q1"]:checked');
+  if (!selected) {
+    document.getElementById("myresults").innerHTML = "";
+    return;
+  }
+  if (selected.id === 'correct') {
     document.getElementById("myresults").innerHTML =
-        "Correct! In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
-  } else if (document.getElementById('incorrect').checked) {
+        "Correct!<br>In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
+  } else {
     document.getElementById("myresults").innerHTML =
-        "Not quite! In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
+        "Not quite!<br>In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
   }
 }
 
@@ -92,13 +93,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize selected state from checked radios (in case persisted)
     if (radio.checked) btn.classList.add('selected');
 
-    // Click on the whole button selects the radio and updates styles
+    // Click on the whole button selects the radio, updates styles and shows result
     btn.addEventListener('click', function (e) {
       // Prevent double-activating if clicking directly on link/button within
       if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
       radio.checked = true;
       clearGroup(radio.name);
       btn.classList.add('selected');
+      // Show results immediately when a choice is selected
+      result();
     });
 
     // If radio changes (e.g., by keyboard), reflect selection visually
@@ -106,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (radio.checked) {
         clearGroup(radio.name);
         btn.classList.add('selected');
+        // Show results immediately when a choice is selected (covers keyboard/assistive input)
+        result();
       } else {
         btn.classList.remove('selected');
       }

@@ -1,36 +1,40 @@
 body {
+  margin: 0; /* remove default browser margin so navbar sits flush */
   background-color: rgb(255, 255, 255);
   font-family: 'Freeman';
 }
 
-ul.a {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  padding-right: 10px;
-  overflow: hidden;
-  background-color: #A35FF7;
-  border: 5px solid #A35FF7;
-  border-radius: 5px;
+:root {
+  --nav-height: 64px;
 }
 
 ul.b {
   list-style-type:disc;
 }
-li.b {
-  font-size: 20px;
-}
-li {
-  font-size: 25px;
-}
-
-li p {
-  color: rgb(255, 255, 255);
-  text-align: center;
+ul.a {
+  list-style-type: none;
+  margin:0;
+  overflow: hidden;
+  background-color: #A35FF7;
+  border: 5px solid #A35FF7;
+  border-radius: 5px;
+  box-sizing: border-box;
+  /* make nav a fixed-height row inside maincontent */
+  height: 90px; /* height of nav bar */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
   padding: 0px 16px;
   text-decoration: none;
   float: left;
   display: block;
+}
+
+ul.a p {
+  font-size: 25px;
+  color: white;
 }
 
 li a {
@@ -44,72 +48,6 @@ li a {
 
 li  a:hover {
     color: grey;
-  }
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 85%;
-  position: relative;
-  margin: auto;
-}
-
-/* Hide slideshow es by default */
-.mySlides {
-  display: none;
-}
-
-/* Slideshow next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Slideshow position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* Slideshow on hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Slideshow caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 20px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Slideshow dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
 }
 
 /* Slideshow fading animation */
@@ -121,6 +59,36 @@ li  a:hover {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+.maincontent {
+  min-height: fit-content;
+  height: 53vw;
+  position: relative;
+  border: 10px solid #750CF7;
+  border-radius: 15px;
+  padding-top: 0; /* remove extra top padding so nav sits flush with border */
+}
+
+.button_containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 0px;
+  border: 0px solid;
+  margin-bottom: 10px;
+}
+
+.bubble-container { /* controls button layout on explore page to look like bubble cloud*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  gap: 20px;
+  border: 0px solid;
+  margin: 20px;
 }
 
 .seamless-video {
@@ -136,18 +104,31 @@ li  a:hover {
   background: none;
   pointer-events: none; /* prevents clicks */
 }
+
+.filter-video {
+  width: 30%;
+  justify-content: center;
+  align-self: auto;
+  margin: 16px auto 0; 
+  height: auto;
+  object-fit: cover;
+  display: flex;
+  border: none;
+  outline: none;
+  background: none;
+  pointer-events:none;  /* prevents clicks */
+}
+
 /* Columns */
 .flex-container-horizontal {
   display: flex;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   align-items: center;
+  margin: 40px;
 }
 .flex-container-horizontal > div {
   background-color: white;
-  width: 90%;
-  margin: 10px;
-  padding: 10px;
 }
 .flex-container-horizontal > div > h2{
   background-color: white;
@@ -164,12 +145,13 @@ li  a:hover {
   color: rgb(0, 0, 0);
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* center the stacked bubble rows vertically within their container */
+  margin-left: 0;
 }
 .flex-container-vertical > div {
   background-color: white;
-  width: 80%;
-  margin: 10px;
-  padding: 10px;
+  width: 90%;
+  padding: 0px;
 }
 .flex-container-vertical > div > h2{
   background-color: white;
@@ -225,30 +207,38 @@ li  a:hover {
   font-size: 20px;
   color: white;
   border-radius: 15px;
-  max-width: 100%;
+  max-width: 80%;
+  margin-left: 100px;
+  margin-right: auto;
 }
 
-.quiz-section > p{
-  margin: 10px
+.quiz-section p {
+  text-align: center;
 }
 
 .img-border {
   border: 5px solid rgb(0, 0, 0);
 }
 /* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+.maincontent {
+  /* make maincontent a column so nav and content stack and content can flex */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  border: 10px solid #750CF7;
+  border-radius: 15px;
+  box-sizing: border-box;
 }
 
-/*Button */
-.button-box {
+/* center the flex-container-vertical inside the remaining space under the nav */
+.maincontent > .flex-container-vertical {
+  flex: 1 1 auto;
   display: flex;
-  height: 200px;
-  border: 0px solid ;
+  flex-direction: column;
+  justify-content: center; /* vertical centering within available space */
+  align-items: center;     /* center horizontally */
+}
   align-items: center;
   justify-content: center;
   }
@@ -275,7 +265,7 @@ li  a:hover {
   transform: scale(0.96);
 }
 
-/* Change button colors and other attributes here. */
+/* main button type, about/back */
 .button {
   display: inline-block;
   background-color: #6188F4;
@@ -292,6 +282,7 @@ li  a:hover {
   border-radius: 15px;
   box-shadow: 0 5px #750CF7;
   transition: transform 0.2s ease;
+  max-width: 250px
 }
 
 .button:active {
@@ -325,28 +316,37 @@ button:hover {
   align-items: center;
   justify-content: center;
   background-color: #6188F4;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 10px;
-  margin-right: 0;
+  margin: 0;
   cursor: pointer;
   font: inherit;
   color: white;
   text-align: center;
   text-decoration: none;
-  padding: 10px 25px;
+  padding: 0 20px; /* horizontal padding only */
   font-size: 20px;
   outline: none;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #F70CCB;
-  transition: transform 0.2s ease;
-  max-width: 250px;
-  min-height: 50px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 260px;   /* fixed width so all buttons are same size */
+  height: 64px;   /* fixed height for consistent layout */
+  box-sizing: border-box;
 }
 
 .animated-button:active {
   transform: scale(0.96);
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+}
+
+/* Subclasses with different shadow colors */
+.animated-button.left {
+  box-shadow: 0 9px 0 #F70CCB; /* pink */
+}
+.animated-button.middle {
+  box-shadow: 0 9px 0 #8A2BE2; /* purple */
+}
+.animated-button.right {
+  box-shadow: 0 9px 0 #3B82F6; /* blue */
 }
 
 .explore-button {
@@ -375,30 +375,6 @@ button:hover {
   100% {
     transform: scale(1);
   }
-}
-
-.maincontent {
-  min-height: fit-content;
-  height: 53vw;
-  position: relative;
-  border: 10px solid #750CF7;
-  border-radius: 15px;
-}
-
-.button_containers {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  border: 0px solid;
-}
-
-.bubble-container { /* controls button layout on explore page to look like bubble cloud*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70%;
-  border: 0px solid;
 }
 
 @media screen and (max-width: 700px) {
