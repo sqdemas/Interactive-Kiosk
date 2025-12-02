@@ -32,82 +32,32 @@
       <li style="float:right"><a href="explore.html" class="button">Home</a></li>
       <li style="float:left"><p>The Personalization Privacy Paradox</li>
     </ul>
-
-    <div class="flex-container-horizontal">
-      <div>
-        <h2>How Do Algorithms Work?</h2>
+    <div class="flex-container-vertical" style="margin-bottom:0px;">
+      <div class="flex-container-horizontal" style="margin-top:0%;">
+        <div>
+          <h2 style="margin-top: 20px;">How Do Algorithms Work?</h2>
         <p>All personalized recommender engines follow the same basic steps:</p>
         <ul class="b">
-          <li class="b">Gather data about a user (input)</li>
-          <li class="b">Analyze the data for patterns</li>
-          <li class="b">Filter based on analysis</li>
-          <li class="b">Provide recommendations to the user (output) </li>
-          <li class="b">See user response and adjust accordingly (feedback loop)</li>
+          <li class="b">Gather data as input</li>
+          <li class="b">Analyze for patterns and apply filtering</li>
+          <li class="b">Provide recommendations as output </li>
+          <li class="b">Adjust according to user response &mdash; feedback loop</li>
         </ul>
-        <p>Filtering methods:</p>
+        <p style="margin-top: 10px;">Filtering is where the bulk of the work is done. There are three main methods:</p>
         <ul class="b">
-          <li class="b">Content-based</li>
-          <li class="b">Collaborative</li>
-          <li class="b">Hybrid</li>
+          <li class="b">Content-based: filtering based on item features such as product description or keywords; helpful when little user data is available</li>
+          <li class="b">Collaborative: compares users against each other to find similarities and recommend similar products</li>
+          <li class="b">Hybrid: combines both content-based and collaborative filtering</li>
         </ul>
+        </div>
+        <div class="figure" style="width:30%; padding: 10px">
+            <video id="introVideo" class="filter-video img-border" autoplay muted loop playsinline>
+        <source src="assets/filter.mp4" type="video/mp4">
+        </video>
+            <div class="caption">Visual of sample inputs and outputs for a recommendation algorithms.</div>
+          </div>
       </div>
-      <video id="introVideo" class="filter-video img-border" autoplay muted loop playsinline>
-      <source src="assets/filter.mp4" type="video/mp4">
-    </video>
-    </div>
-    <div class="button_containers">
-      <a href="examples.html" class="button">See how algorithms are used by different companies</a>
     </div>
   </div>
-
-<script>
-function result() {
-  if (document.getElementById('correct').checked) {
-    document.getElementById("myresults").innerHTML =
-        "Correct! In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
-  } else {
-    document.getElementById("myresults").innerHTML =
-        "Not quite! In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
-  }
-}
-
-// Make entire .button elements (that contain a radio) act as the selectable choice.
-document.addEventListener('DOMContentLoaded', function () {
-  function clearGroup(name) {
-    if (!name) return;
-    document.querySelectorAll('.button input[type="radio"][name="' + name + '"]').forEach(function (r) {
-      var p = r.closest('.button');
-      if (p) p.classList.remove('selected');
-    });
-  }
-
-  document.querySelectorAll('.button').forEach(function (btn) {
-    var radio = btn.querySelector('input[type="radio"]');
-    if (!radio) return; // skip buttons without radios (e.g., Reveal)
-
-    // Initialize selected state from checked radios (in case persisted)
-    if (radio.checked) btn.classList.add('selected');
-
-    // Click on the whole button selects the radio and updates styles
-    btn.addEventListener('click', function (e) {
-      // Prevent double-activating if clicking directly on link/button within
-      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return;
-      radio.checked = true;
-      clearGroup(radio.name);
-      btn.classList.add('selected');
-    });
-
-    // If radio changes (e.g., by keyboard), reflect selection visually
-    radio.addEventListener('change', function () {
-      if (radio.checked) {
-        clearGroup(radio.name);
-        btn.classList.add('selected');
-      } else {
-        btn.classList.remove('selected');
-      }
-    });
-  });
-});
-</script>
 </body>
 </html>

@@ -32,31 +32,28 @@
       <li style="float:right"><a href="explore.html" class="button">Home</a></li>
       <li style="float:left"><p>The Personalization Privacy Paradox</li>
     </ul>
-
     <div class="flex-container-vertical">
       <div>
         <h2>Real World Examples</h2>
-        <p>Click different logos to learn more about each company's algorithm usage!</p>
-
-        <div class="button_containers">
-          <a href="filter.html" class="button">Learn about how algorithms work</a>
+        <div class="flex-container-horizontal">
+          <div>
+            <img src="assets/netflix.png" id="netflix" class="img-responsive pulse-logo delay1" style="padding: 10px; width:100%" alt="Netflix logo" tabindex="0" role="button" aria-label="More about Netflix algorithm">
+            <img src="assets/tiktok.png" id="tiktok" class="img-responsive pulse-logo delay2" style="padding: 10px; width:40%" alt="TikTok logo" tabindex="0" role="button" aria-label="More about TikTok algorithm">
+          </div>
+          <div>
+            <img src="assets/google.png" id="google" class="img-responsive pulse-logo delay4" style="padding: 10px; width:40%" alt="Google logo" tabindex="0" role="button" aria-label="More about Google algorithm">
+            <img src="assets/target.png" id="target" class="img-responsive pulse-logo delay3" style="padding: 10px; width:40%" alt="Target logo" tabindex="0" role="button" aria-label="More about Target algorithm">
+          </div>
+        <div class="brand-section">
+          <p id="alg-info">Click different logos to learn more about each company's algorithm usage!</p>
         </div>
+      </div>
 
       </div>
     </div>
   </div>
 
 <script>
-function result() {
-  if (document.getElementById('correct').checked) {
-    document.getElementById("myresults").innerHTML =
-        "Correct! In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
-  } else {
-    document.getElementById("myresults").innerHTML =
-        "Not quite! In 2024, the recommendation engine market was estimated to be worth about $6.8 billion and is only expected to grow in the coming years.";
-  }
-}
-
 // Make entire .button elements (that contain a radio) act as the selectable choice.
 document.addEventListener('DOMContentLoaded', function () {
   function clearGroup(name) {
@@ -93,6 +90,41 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+  
+  // Attach click and keyboard handlers to logo images to update #alg-info
+  (function attachLogoInfoHandlers() {
+    var info = document.getElementById('alg-info');
+    if (!info) return;
+
+    var texts = {
+      netflix: "Netflix utilizes hybrid filtering to recommend media. Their algorithm looks at viewing history and user preferences to apply collaborative filtering. Additionally, Netflix uses tens of thousands of microgenres to compare their movies using content-based filtering. Netflix's algorithm is incredibly powerful: about 80% of what Netflix viewers consume is recommended by the Netflix algorithm.",
+      tiktok: "TikTok's For You Page has propelled the platform into popularity, making it one of the most-widely used social media platforms. TikTok mainly employs collaborative filtering to suggest content that similar users also like. TikTok collects implicit data to detect engagement such as watch time, replays, or browsing history, to strongly personalize an individual's recommendations.",
+      target: "Target tracks customer shopping habits through online browsing and purchase history using their loyalty program. Target creates personalized customer profiles groups in a process known as customer segmentation to better predict purchases and provide personalized advertisements. In an notable example, Target accurately predicted a teenager's pregnancy before her family knew based solely on her shopping habits.",
+      google: "Google's search engine optimization (SEO) is powered by multiple complex algorithms which analyze user information such as search history and browsing activity as well as content like website metadata to provide efficient, personalized search results and targeted advertisements."
+    };
+
+    function activate(id) {
+      var t = texts[id] || "No information available.";
+      info.textContent = t;
+    }
+
+    ['netflix', 'tiktok', 'target', 'google'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+
+      // Click/tap
+      el.addEventListener('click', function () { activate(id); });
+
+      // Keyboard (Enter or Space)
+      el.addEventListener('keydown', function (e) {
+        var key = e.key || e.keyCode;
+        if (key === 'Enter' || key === 13 || key === ' ' || key === 'Spacebar' || key === 32) {
+          e.preventDefault();
+          activate(id);
+        }
+      });
+    });
+  })();
 });
 </script>
 </body>
