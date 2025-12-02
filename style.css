@@ -4,13 +4,13 @@ body {
   font-family: 'Freeman';
 }
 
-:root {
-  --nav-height: 64px;
-}
-
 ul.b {
   list-style-type:disc;
+  font-size: 20px;
+  margin:0px;
 }
+
+/* Navigation bar style */
 ul.a {
   list-style-type: none;
   margin:0;
@@ -19,24 +19,18 @@ ul.a {
   border: 5px solid #A35FF7;
   border-radius: 5px;
   box-sizing: border-box;
-  /* make nav a fixed-height row inside maincontent */
   height: 90px; /* height of nav bar */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 16px;
-  padding-right: 16px;
   padding: 0px 16px;
   text-decoration: none;
-  float: left;
   display: block;
 }
-
 ul.a p {
   font-size: 25px;
   color: white;
 }
-
 li a {
   display: block;
   float: right;
@@ -45,9 +39,8 @@ li a {
   padding: 23px 16px;
   text-decoration: none;
 }
-
 li  a:hover {
-    color: grey;
+  color: grey;
 }
 
 /* Slideshow fading animation */
@@ -61,15 +54,20 @@ li  a:hover {
   to {opacity: 1}
 }
 
+/* wrapper for entire page within purple border */
 .maincontent {
-  min-height: fit-content;
-  height: 53vw;
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+  max-height: max-content;
   position: relative;
   border: 10px solid #750CF7;
   border-radius: 15px;
-  padding-top: 0; /* remove extra top padding so nav sits flush with border */
+  box-sizing: border-box;
+  margin: 10px;
 }
 
+/* container for buttons on content pages */
 .button_containers {
   display: flex;
   justify-content: center;
@@ -81,7 +79,8 @@ li  a:hover {
   margin-bottom: 10px;
 }
 
-.bubble-container { /* controls button layout on explore page to look like bubble cloud*/
+/* controls button layout on explore page to look like bubble cloud*/
+.bubble-container { 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,6 +90,7 @@ li  a:hover {
   margin: 20px;
 }
 
+/* makes animation videos look seamless */
 .seamless-video {
   width: 80%;
   justify-content: center;
@@ -106,7 +106,7 @@ li  a:hover {
 }
 
 .filter-video {
-  width: 30%;
+  width: 100%;
   justify-content: center;
   align-self: auto;
   margin: 16px auto 0; 
@@ -122,21 +122,45 @@ li  a:hover {
 /* Columns */
 .flex-container-horizontal {
   display: flex;
-  background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   align-items: center;
-  margin: 40px;
+  margin:0px;
 }
+
 .flex-container-horizontal > div {
-  background-color: white;
+  width:fit-content;
+  margin:0px;
+}
+
+/* Ensure ethical-box uses a stable width even inside flex children selectors that use fit-content
+   (the more specific selector below will win and keep these boxes consistent). */
+.flex-container-horizontal > .ethical-box {
+  width: 500px;        /* keep consistent on desktop */
+  box-sizing: border-box; /* include padding in width */
+  min-width: 220px;    /* avoid getting too small on narrow screens */
+  max-width: calc(100% - 40px); /* keep responsive with surrounding margins */
+  height: 140px;
+  border: 5px solid #750CF7;
+  background-color: #216fec;
+  color: white;
+  border-radius: 15px;;
+  align-items: center;    
+  justify-content: center;
+  padding: 10px;
+  margin:5px;
+}
+
+.flex-container-horizontal > .ethical-box > p {
+  font-size: 15px;
+
 }
 .flex-container-horizontal > div > h2{
-  background-color: white;
   font-size: 35px;
+  margin:0px;
 }
 .flex-container-horizontal > div > p{
-  background-color: white;
   font-size: 20px;
+  margin:0px;
 }
 
 .flex-container-vertical {
@@ -145,22 +169,26 @@ li  a:hover {
   color: rgb(0, 0, 0);
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* center the stacked bubble rows vertically within their container */
-  margin-left: 0;
+  justify-content: center;
+  margin:0px;
 }
 .flex-container-vertical > div {
   background-color: white;
   width: 90%;
   padding: 0px;
+  margin: 0px;
 }
 .flex-container-vertical > div > h2{
   background-color: white;
   font-size: 35px;
   position: relative;
+  margin-top: 20px;
+  margin-bottom:5px;
 }
 .flex-container-vertical > div > p{
   background-color: white;
   font-size: 20px;
+  margin: 0px;
 }
 
 /* Center only images that are inside a flex container without affecting other children */
@@ -173,6 +201,28 @@ li  a:hover {
   align-self: center;    /* centers on cross-axis when needed */
   width: 70%;
   height: auto;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px; /* space between image and caption */
+}
+
+.figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.caption {
+  color: #000000;
+  font-size: 15px;
+  text-align: center;
+  line-height: 1.2;
+  margin-top: 0; /* handled by gap */
 }
 
 /* The modal (background) */
@@ -189,7 +239,6 @@ li  a:hover {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* hmmm I'm confused */
 .center {
   justify-content: center;
   margin-left: 0;
@@ -214,55 +263,76 @@ li  a:hover {
 
 .quiz-section p {
   text-align: center;
+  margin: 5px;
+}
+
+.brand-section {
+  border: 5px solid #750CF7;
+  background-color: #F70CCB;
+  color: white;
+  border-radius: 15px;
+  min-width: 360px;
+  max-width: fit-content;
+  height: 320px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.brand-section > p{
+  align-items: center;
+  padding: 10px;
+  justify-content: center;
+}
+
+.ftc-section {
+  border: 5px solid #750CF7;
+  background-color: #216fec;
+  color: white;
+  border-radius: 15px;
+  width: min(600px, 92%); /* cap width and keep responsive */
+  height: 150px;
+  display: flex;
+  align-items: center;     /* vertically center content */
+  justify-content: flex-start; /* keep content left-aligned horizontally */
+  padding-left: 18px;     /* give some left breathing room */
+}
+
+.ftc-section > p{
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.ethical-box > p{
+  margin: 0px;
+}
+/* privacy.html: center only the ftc-section box vertically in the viewport */
+.privacy-page .ftc-center-wrapper {
+  /* make wrapper tall enough to cover viewport minus header/nav space so the box centers vertically */
+
+  display: flex;
+  align-items: center;   /* vertical centering */
+  justify-content: center; /* keep the box centered horizontally as well */
+  padding: 12px 0; /* breathing room on very short viewports */
+}
+
+@media screen and (max-height: 640px) {
+  /* on short screens reduce the min height so the page can scroll naturally */
+  .privacy-page .ftc-center-wrapper { min-height: 48vh; }
 }
 
 .img-border {
   border: 5px solid rgb(0, 0, 0);
 }
-/* Modal Content/Box */
-.maincontent {
-  /* make maincontent a column so nav and content stack and content can flex */
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-  border: 10px solid #750CF7;
-  border-radius: 15px;
-  box-sizing: border-box;
-}
 
-/* center the flex-container-vertical inside the remaining space under the nav */
-.maincontent > .flex-container-vertical {
+/* center the flex-container-vertical on explore page */
+.maincontent > .cloud {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: center; /* vertical centering within available space */
   align-items: center;     /* center horizontally */
-}
-  align-items: center;
-  justify-content: center;
-  }
-
-.reveal-button {
-  display: inline-block;
-  background-color: #6188F4;
-  cursor: pointer;
-  font: inherit;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  padding: 10px 20px;
-  font-size: 20px;
-  outline: none;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 5px #750CF7;
-  transition: transform 0.2s ease;
-  margin: 5px;
-}
-
-.reveal-button:active {
-  transform: scale(0.96);
 }
 
 /* main button type, about/back */
@@ -306,7 +376,7 @@ button:hover {
 }
 
 .button.selected {
-  background-color: #61d437; /* green */
+  background-color:#7bbef4; /* green */
   color: white;
   border-color: rgba(0,0,0,0.2);
 }
@@ -322,33 +392,75 @@ button:hover {
   color: white;
   text-align: center;
   text-decoration: none;
-  padding: 0 20px; /* horizontal padding only */
+  padding: 0 20px;
   font-size: 20px;
   outline: none;
   border: none;
   border-radius: 15px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 260px;   /* fixed width so all buttons are same size */
-  height: 64px;   /* fixed height for consistent layout */
+  width: 220px;
+  height: 64px;   
   box-sizing: border-box;
 }
 
+/* Inner wrapper so a press-scale can be applied without conflicting with parent animation */
+.animated-button__content {
+  display: inline-block; /* allow its own transform that multiplies with parent */
+  transition: transform 0.12s ease;
+}
+
 .animated-button:active {
-  transform: scale(0.96);
+  /* keep the pressed shadow still on parent */
   box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+}
+
+/* when pressed, shrink the inner content — this multiplies with parent animated transform */
+.animated-button:active .animated-button__content {
+  transform: scale(0.96);
 }
 
 /* Subclasses with different shadow colors */
 .animated-button.left {
-  box-shadow: 0 9px 0 #F70CCB; /* pink */
+  background-color: #216fec;
+  box-shadow: 0 9px 0 #70a0ed; 
+  animation: slow-pulse2 9s infinite;
 }
 .animated-button.middle {
-  box-shadow: 0 9px 0 #8A2BE2; /* purple */
+  background-color: #A35FF7;
+  box-shadow: 0 9px 0 #dfbdff;
+  width: 260px;
+  height: 90px;
+  animation: slow-pulse 9s infinite;
 }
 .animated-button.right {
-  box-shadow: 0 9px 0 #3B82F6; /* blue */
+  background-color: #F70CCB;
+  box-shadow: 0 9px 0 #ff7fe7; 
+  animation: slow-pulse3 9s infinite;
 }
 
+@keyframes slow-pulse {
+  0% { transform: scale(1); }
+  16% { transform: scale(1.05); }
+  33% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slow-pulse2 {
+  0% { transform: scale(1); }
+  33% { transform: scale(1); }
+  49% { transform: scale(1.05); }
+  66% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slow-pulse3 {
+  0% { transform: scale(1); }
+  66% { transform: scale(1); }
+  82% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* styling for first EXPLORE button */
 .explore-button {
   display: block; /* make it take its own line so margin:auto centers it */
   margin: 16px auto 0; /* space above, centered horizontally */
@@ -365,6 +477,7 @@ button:hover {
   animation: pulse 1.5s infinite;
 }
 
+/* pulse animation for first EXPLORE button */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -376,6 +489,68 @@ button:hover {
     transform: scale(1);
   }
 }
+
+.pulse-logo {
+  display: inline-block; /* allow transform scale */
+  transform-origin: center center;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+
+.pulse-logo:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.18); /* visible focus ring */
+  border-radius: 8px;
+}
+
+.delay1 {
+  animation: logoPulse1 12s ease-in-out infinite;
+}
+
+.delay2 {
+  animation: logoPulse2 12s ease-in-out infinite;
+}
+
+.delay3 {
+  animation: logoPulse3 12s ease-in-out infinite;
+}
+
+.delay4 {
+  animation: logoPulse4 12s ease-in-out infinite;
+}
+
+@keyframes logoPulse1 {
+  0% { transform: scale(1); }
+  12% { transform: scale(1.15); }
+  25% { transform: scale(0.99); }
+  70% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes logoPulse2 {
+  0% { transform: scale(1); }
+  25% { transform: scale(1); }
+  37% { transform: scale(1.15); }
+  50% { transform: scale(0.99); }
+  100% { transform: scale(1); }
+}
+
+@keyframes logoPulse3 {
+  0% { transform: scale(1); }
+  50% { transform: scale(1); }
+  62% { transform: scale(1.15); }
+  75% { transform: scale(0.99); }
+  100% { transform: scale(1); }
+}
+
+@keyframes logoPulse4 {
+  0% { transform: scale(1); }
+  75% { transform: scale(1); }
+  87% { transform: scale(1.15); }
+  98% { transform: scale(0.99); }
+  100% { transform: scale(1); }
+}
+
 
 @media screen and (max-width: 700px) {
   .sidebar {
