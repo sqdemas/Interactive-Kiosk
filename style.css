@@ -132,8 +132,6 @@ li  a:hover {
   margin:0px;
 }
 
-/* Ensure ethical-box uses a stable width even inside flex children selectors that use fit-content
-   (the more specific selector below will win and keep these boxes consistent). */
 .flex-container-horizontal > .ethical-box {
   width: 500px;        /* keep consistent on desktop */
   box-sizing: border-box; /* include padding in width */
@@ -143,7 +141,7 @@ li  a:hover {
   border: 5px solid #750CF7;
   background-color: #216fec;
   color: white;
-  border-radius: 15px;;
+  border-radius: 15px;
   align-items: center;    
   justify-content: center;
   padding: 10px;
@@ -152,7 +150,7 @@ li  a:hover {
 
 .flex-container-horizontal > .ethical-box > p {
   font-size: 15px;
-
+  margin: 0px;
 }
 .flex-container-horizontal > div > h2{
   font-size: 35px;
@@ -304,9 +302,6 @@ li  a:hover {
   border-radius: 15px;
 }
 
-.ethical-box > p{
-  margin: 0px;
-}
 /* privacy.html: center only the ftc-section box vertically in the viewport */
 .privacy-page .ftc-center-wrapper {
   /* make wrapper tall enough to cover viewport minus header/nav space so the box centers vertically */
@@ -334,6 +329,86 @@ li  a:hover {
   justify-content: center; /* vertical centering within available space */
   align-items: center;     /* center horizontally */
 }
+
+.flip-card {
+  width: 400px;        /* keep consistent on desktop */
+  box-sizing: border-box; /* include padding in width */
+  min-width: 220px;    /* avoid getting too small on narrow screens */
+  max-width: calc(100% - 40px); /* keep responsive with surrounding margins */
+  height: 180px;
+  background-color: transparent;
+  color: white;
+  display: flex;
+  align-items: center;    
+  justify-content: center;
+  perspective: 1000px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  border: 5px solid #750CF7;
+  background-color: #70a0ed;
+  border-radius: 15px;
+  position: relative;
+  width: 400px;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Flip when the .flipped class is applied (via click handler) */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side */
+.flip-card-front {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 25px;
+}
+
+/* Style the back side */
+.flip-card-back {
+  transform: rotateY(180deg);
+  padding: 10px 10px 10px 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 15px;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.flip-card-back h1 {
+  margin: 0px;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.flip-card-back p {
+  margin: 4px 0;
+  line-height: 1.4;
+  font-size: 15px;
+}
+
 
 /* main button type, about/back */
 .button {

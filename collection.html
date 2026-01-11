@@ -35,21 +35,51 @@
     <div class="flex-container-vertical">
       <div>
         <h2>Data Collection</h2>
-        <p>All sorts of data is collected about users to create a profile of their habits both online and offline. Data is collected from three major sources:</p>
+        <p>There are THREE major types of sources which brokers collect data from which allow them to create user profiles of both online and offline habits.</p>
         <ul class="b">
-          <li class="b">Public sources: public social media profiles, online forums</li>
-          <li class="b">Commercial sources: retailers, subscription lists, finanncial services, loyalty programs</li>
-          <li class="b">Government sources: census, public records, and social security information</li>
+          <li class="b"><b>Public sources:</b> public social media profiles, online forums</li>
+          <li class="b"><b>Commercial sources:</b> retailers, subscription lists, financial services, loyalty programs</li>
+          <li class="b"><b>Government sources:</b> census, public records, and social security information</li>
         </ul> 
-        
-        <p style="margin-top: 10px;">Data can be classified into <b>explicit data</b> and <b>implicit data.</b> Traditionally algorithms relied on <b>explicit data</b>&mdash; data provided by users like feedback or demographic information. However, many algorithms today rely on <b>implicit data</b>&mdash; data regarding user behavior as implicit data is always objective. <br>Examples of implicit data include:</p>
-        <ul class="b">
-          <li class="b">Watch time of videos and scroll speed on social media</li>
-          <li class="b">Search history and activity across websites monitored by tracking cookies</li>
-          <li class="b">Shopping habits recorded by retail loyalty programs</li>
-        </ul> 
+
+        <p style="margin: 10px;">Additionally, many sources collect two distinct types of data: <b>explicit data</b> and <b>implicit data</b></p>
+
+        <div class="flex-container-horizontal" style="justify-content: center;">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <p>Tap to learn about<br>explicit data</p>
+              </div>
+              <div class="flip-card-back">
+                <h1>Explicit Data</h1>
+                <p>Explicit data is data provided directly from the user. This includes feedback surveys or rating. Additionally, many services ask users to explicitly enter personal information like name, age, race, etc. Explicit data may be less reliable as it is dependant on subjective user input.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <p>Tap to learn about<br>implicit data</p>
+              </div>
+              <div class="flip-card-back">
+                <h1>Implicit Data</h1>
+                <p>Implicit data is data collected about a user's behavior, usually without the user's awareness. This includes watch time, search history, scroll speed, and clicks. Many modern algorithms prefer to rely on implicit data as it is considered more objective than explicit data.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
   </div>
+</div>
+
+<script>
+// Toggle flip on click
+document.querySelectorAll('.flip-card').forEach(card => {
+  card.addEventListener('click', function() {
+    this.classList.toggle('flipped');
+  });
+});
+</script>
 </body>
 </html>
